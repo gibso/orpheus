@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  amalgamation:
+    build: ./amalgamation
+    networks:
+      - bridge
+    volumes:
+      - ./amalgamation:/opt/project
+      - ./data/th:/data/th
+      - ./data/xml:/data/xml
+    environment:
+      HETSAPI_INTERNAL_URL: hets-api:5000
+    depends_on:
+      - hets-api
+
+  hets-api:
+    build:
+      context: ./hets-api
+      dockerfile: Dockerfile.dev
+    networks:
+      - bridge
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./hets-api/hets_api:/opt/project/hets_api
+      - ./hets-api/tests:/opt/project/tests
+      - ./hets-api/setup.py:/opt/project/setup.py
+      - ./data/th:/data/th
+      - ./data/xml:/data/xml
+    environment:
+      FLASK_APP: hets_api
+      FLASK_ENV: development
+
+networks:
+  bridge:
+    driver: bridge
