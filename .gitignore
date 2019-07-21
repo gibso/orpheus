@@ -1,10 +1,5 @@
 # JetBrain IDE Files
 .idea/
 
-# project folders
-clingo-api/
-hets-api/
-amalgamation/
-
 # shared data folder
 data/
