@@ -4,3 +4,6 @@
 [submodule "hets-api"]
 	path = hets-api
 	url = ./hets-api
+[submodule "concept-innovator"]
+	path = concept-innovator
+	url = ./concept-innovator
