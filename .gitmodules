@@ -1,0 +1,3 @@
+[submodule "amalgamation"]
+	path = amalgamation
+	url = ./amalgamation
