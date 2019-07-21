@@ -1,9 +1,9 @@
 [submodule "amalgamation"]
 	path = amalgamation
-	url = ./amalgamation
+	url = git@github.com:gibso/Amalgamation.git
 [submodule "hets-api"]
 	path = hets-api
-	url = ./hets-api
+	url = git@github.com:gibso/hets-api.git
 [submodule "concept-innovator"]
 	path = concept-innovator
-	url = ./concept-innovator
+	url = git@github.com:gibso/concept-innovator.git
