@@ -1,3 +1,6 @@
 [submodule "amalgamation"]
 	path = amalgamation
 	url = ./amalgamation
+[submodule "hets-api"]
+	path = hets-api
+	url = ./hets-api
