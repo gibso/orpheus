@@ -7,8 +7,7 @@ services:
       - bridge
     volumes:
       - ./amalgamation:/opt/project
-      - ./data/th:/data/th
-      - ./data/xml:/data/xml
+      - ./data:/data
     environment:
       HETSAPI_INTERNAL_URL: hets-api:5000
     depends_on:
@@ -26,10 +25,37 @@ services:
       - ./hets-api/hets_api:/opt/project/hets_api
       - ./hets-api/tests:/opt/project/tests
       - ./hets-api/setup.py:/opt/project/setup.py
-      - ./data/th:/data/th
-      - ./data/xml:/data/xml
+      - ./data:/data
     environment:
       FLASK_APP: hets_api
+      FLASK_ENV: development
+
+  hets:
+    image: spechub2/hets:latest
+    networks:
+      - bridge
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data/amalgamation
+      - ./Hets-lib:/data/hets
+    environment:
+      HETS_LIB: /data
+
+  innovator:
+    build:
+      context: ./concept-innovator
+      dockerfile: Dockerfile.dev
+    networks:
+      - bridge
+    ports:
+      - "3000:5000"
+    volumes:
+      - ./concept-innovator/concept_innovator:/opt/project/concept_innovator
+      - ./concept-innovator/tests:/opt/project/tests
+      - ./concept-innovator/setup.py:/opt/project/setup.py
+    environment:
+      FLASK_APP: concept_innovator
       FLASK_ENV: development
 
 networks:
