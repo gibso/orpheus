@@ -3,3 +3,11 @@
 
 # shared data folder
 data/
+
+# temporary working directories
+amalgamation-meppe/
+coinvent/
+Hets/
+Hets-lib/
+clingo-api/
+programatica/
