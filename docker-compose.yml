@@ -59,12 +59,9 @@ services:
       FLASK_ENV: development
 
   thesis:
-    image: schickling/latex
-    networks:
-      - bridge
+    build: ./thesis
     volumes:
       - ./thesis:/opt/thesis
-    command: ["bash", "/opt/thesis/compile.sh"]
 
 networks:
   bridge:
