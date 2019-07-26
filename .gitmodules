@@ -7,3 +7,6 @@
 [submodule "concept-innovator"]
 	path = concept-innovator
 	url = git@github.com:gibso/concept-innovator.git
+[submodule "thesis"]
+	path = thesis
+	url = git@github.com:gibso/masterthesis.git
