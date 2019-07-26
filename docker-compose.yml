@@ -58,6 +58,14 @@ services:
       FLASK_APP: concept_innovator
       FLASK_ENV: development
 
+  thesis:
+    image: schickling/latex
+    networks:
+      - bridge
+    volumes:
+      - ./thesis:/opt/thesis
+    command: ["bash", "/opt/thesis/compile.sh"]
+
 networks:
   bridge:
     driver: bridge
