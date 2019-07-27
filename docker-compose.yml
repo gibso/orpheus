@@ -63,6 +63,13 @@ services:
     volumes:
       - ./thesis:/opt/thesis
 
+  webserver:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./thesis/out:/usr/share/nginx/html
+
 networks:
   bridge:
     driver: bridge
