@@ -68,7 +68,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./thesis/out:/usr/share/nginx/html
+      - ./thesis/out/html:/usr/share/nginx/html
+      - ./thesis/out/html/thesis.html:/usr/share/nginx/html/index.html
 
 networks:
   bridge:
