@@ -62,14 +62,24 @@ services:
     build: ./thesis
     volumes:
       - ./thesis:/opt/thesis
+      - thesis_html:/opt/thesis/out/html
 
-  webserver:
-    image: nginx
-    ports:
-      - "80:80"
+  frontend:
+    image: danlynn/ember-cli:latest
     volumes:
-      - ./thesis/out/html:/usr/share/nginx/html
-      - ./thesis/out/html/thesis.html:/usr/share/nginx/html/index.html
+      - ./frontend:/myapp
+      - frontend_pkgs:/myapp/node_modules
+      - thesis_html:/myapp/public/thesis
+    tmpfs:
+      - /myapp/tmp
+    ports:
+      - "4200:4200"
+      - "7020:7020"
+      - "7357:7357"
+
+volumes:
+  frontend_pkgs:
+  thesis_html:
 
 networks:
   bridge:
