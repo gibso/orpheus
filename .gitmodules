@@ -10,3 +10,6 @@
 [submodule "thesis"]
 	path = thesis
 	url = git@github.com:gibso/masterthesis.git
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:gibso/thesis-frontend.git
