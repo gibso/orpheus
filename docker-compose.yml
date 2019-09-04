@@ -5,11 +5,15 @@ services:
     build: ./amalgamation
     networks:
       - bridge
+    ports:
+      - "4000:5000"
     volumes:
       - ./amalgamation:/opt/project
       - ./data:/data
     environment:
       HETSAPI_INTERNAL_URL: hets-api:5000
+      FLASK_APP: amalgamation
+      FLASK_ENV: development
     depends_on:
       - hets-api
 
@@ -22,9 +26,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./hets-api/hets_api:/opt/project/hets_api
-      - ./hets-api/tests:/opt/project/tests
-      - ./hets-api/setup.py:/opt/project/setup.py
+      - ./hets-api:/opt/project
       - ./data:/data
     environment:
       FLASK_APP: hets_api
@@ -38,7 +40,6 @@ services:
       - "8000:8000"
     volumes:
       - ./data:/data/amalgamation
-      - ./Hets-lib:/data/hets
     environment:
       HETS_LIB: /data
 
