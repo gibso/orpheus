@@ -2,7 +2,9 @@ version: "3"
 
 services:
   amalgamation:
-    build: ./amalgamation
+    build:
+      context: ./amalgamation
+      dockerfile: Dockerfile.dev
     networks:
       - bridge
     ports:
@@ -56,6 +58,7 @@ services:
     environment:
       FLASK_APP: concept_innovator
       FLASK_ENV: development
+      AMALGAMATION_INTERNAL_HOST: amalgamation:5000
 
   thesis:
     build: ./thesis
@@ -77,6 +80,7 @@ services:
       - "7357:7357"
     environment:
       INNOVATOR_HOST: localhost:3000
+      AMALGAMATION_HOST: localhost:4000
 
 volumes:
   frontend_pkgs:
