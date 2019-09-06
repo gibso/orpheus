@@ -13,7 +13,7 @@ services:
       - ./amalgamation:/opt/project
       - ./data:/data
     environment:
-      HETSAPI_INTERNAL_URL: hets-api:5000
+      HETSAPI_HOST: hets-api:5000
       FLASK_APP: amalgamation
       FLASK_ENV: development
     depends_on:
@@ -56,9 +56,7 @@ services:
     volumes:
       - ./specifier:/opt/project
     environment:
-      FLASK_APP: concept_specifier
       FLASK_ENV: development
-      AMALGAMATION_INTERNAL_HOST: amalgamation:5000
 
   thesis:
     build: ./thesis
