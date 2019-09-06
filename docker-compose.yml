@@ -45,18 +45,18 @@ services:
     environment:
       HETS_LIB: /data
 
-  innovator:
+  specifier:
     build:
-      context: ./concept-innovator
+      context: ./specifier
       dockerfile: Dockerfile.dev
     networks:
       - bridge
     ports:
       - "3000:5000"
     volumes:
-      - ./concept-innovator:/opt/project
+      - ./specifier:/opt/project
     environment:
-      FLASK_APP: concept_innovator
+      FLASK_APP: concept_specifier
       FLASK_ENV: development
       AMALGAMATION_INTERNAL_HOST: amalgamation:5000
 
@@ -79,7 +79,7 @@ services:
       - "7020:7020"
       - "7357:7357"
     environment:
-      INNOVATOR_HOST: localhost:3000
+      SPECIFIER_HOST: localhost:3000
       AMALGAMATION_HOST: localhost:4000
 
 volumes:

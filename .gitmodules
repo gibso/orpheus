@@ -4,9 +4,9 @@
 [submodule "hets-api"]
 	path = hets-api
 	url = git@github.com:gibso/hets-api.git
-[submodule "concept-innovator"]
-	path = concept-innovator
-	url = git@github.com:gibso/concept-innovator.git
+[submodule "specifier"]
+	path = specifier
+	url = git@github.com:gibso/concept-specifier.git
 [submodule "thesis"]
 	path = thesis
 	url = git@github.com:gibso/masterthesis.git
