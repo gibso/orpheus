@@ -12,4 +12,4 @@
 	url = git@github.com:gibso/masterthesis.git
 [submodule "frontend"]
 	path = frontend
-	url = git@github.com:gibso/thesis-frontend.git
+	url = git@github.com:gibso/orpheus-frontend.git

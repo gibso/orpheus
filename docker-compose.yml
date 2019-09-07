@@ -57,19 +57,22 @@ services:
       - ./specifier:/opt/project
     environment:
       FLASK_ENV: development
+      MAX_FACTS_PER_RELATION: 1
+      VALID_FACT_LANGUAGES: 'en,de'
 
-  thesis:
-    build: ./thesis
-    volumes:
-      - ./thesis:/opt/thesis
-      - thesis_html:/opt/thesis/out/html
+#  thesis:
+#    build: ./thesis
+#    volumes:
+#      - ./thesis:/opt/thesis
+#      - thesis_html:/opt/thesis/out/html
 
   frontend:
     image: danlynn/ember-cli:latest
+    working_dir: /opt/project
     volumes:
-      - ./frontend:/myapp
-      - frontend_pkgs:/myapp/node_modules
-      - thesis_html:/myapp/public/thesis
+      - ./frontend:/opt/project
+      - frontend_pkgs:/opt/project/node_modules
+      - thesis_html:/opt/project/public/thesis
     tmpfs:
       - /myapp/tmp
     ports:
