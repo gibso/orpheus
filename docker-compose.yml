@@ -1,84 +1,42 @@
 version: "3"
 
 services:
+
   amalgamation:
-    build:
-      context: ./amalgamation
-      dockerfile: Dockerfile.dev
+    build: ./amalgamation
     networks:
       - bridge
     ports:
       - "4000:5000"
-    volumes:
-      - ./amalgamation:/opt/project
-      - ./data:/data
     environment:
       HETSAPI_HOST: hets-api:5000
-      FLASK_APP: amalgamation
-      FLASK_ENV: development
     depends_on:
       - hets-api
 
   hets-api:
-    build:
-      context: ./hets-api
-      dockerfile: Dockerfile.dev
+    build: ./hets-api
     networks:
       - bridge
     ports:
       - "5000:5000"
-    volumes:
-      - ./hets-api:/opt/project
-      - ./data:/data
-    environment:
-      FLASK_APP: hets_api
-      FLASK_ENV: development
-
-  hets:
-    image: spechub2/hets:latest
-    networks:
-      - bridge
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./data:/data/amalgamation
-    environment:
-      HETS_LIB: /data
 
   specifier:
-    build:
-      context: ./specifier
-      dockerfile: Dockerfile.dev
+    build: ./specifier
     networks:
       - bridge
     ports:
       - "3000:5000"
-    volumes:
-      - ./specifier:/opt/project
     environment:
-      FLASK_ENV: development
       MAX_FACTS_PER_RELATION: 1
       VALID_FACT_LANGUAGES: 'en,de'
 
-#  thesis:
-#    build: ./thesis
-#    volumes:
-#      - ./thesis:/opt/thesis
-#      - thesis_html:/opt/thesis/out/html
+  thesis:
+    build: ./thesis
+    volumes:
+      - thesis_html:/opt/thesis/out/html
 
   frontend:
-    image: danlynn/ember-cli:latest
-    working_dir: /opt/project
-    volumes:
-      - ./frontend:/opt/project
-      - frontend_pkgs:/opt/project/node_modules
-      - thesis_html:/opt/project/public/thesis
-    tmpfs:
-      - /myapp/tmp
-    ports:
-      - "4200:4200"
-      - "7020:7020"
-      - "7357:7357"
+    build: ./frontend
     environment:
       SPECIFIER_HOST: localhost:3000
       AMALGAMATION_HOST: localhost:4000

@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+
+  amalgamation:
+    volumes:
+      - ./amalgamation:/opt/project
+      - ./data:/data
+    environment:
+      FLASK_ENV: development
+
+  hets-api:
+    volumes:
+      - ./hets-api:/opt/project
+      - ./data:/data
+    environment:
+      FLASK_ENV: development
+
+  specifier:
+    volumes:
+      - ./specifier:/opt/project
+    environment:
+      FLASK_ENV: development
+
+  thesis:
+    volumes:
+      - ./thesis:/opt/thesis
+
+  frontend:
+    volumes:
+      - ./frontend:/opt/project
+      - frontend_pkgs:/opt/project/node_modules
+      - thesis_html:/opt/project/public/thesis
+    tmpfs:
+      - /myapp/tmp
+    ports:
+      - "4200:4200"
+      - "7020:7020"
+      - "7357:7357"
