@@ -13,7 +13,7 @@ services:
   specifier:
     environment:
       MAX_FACTS_PER_RELATION: 5
-
+      VALID_FACT_LANGUAGES: 'en,de'
 
   frontend:
     command: ember build -prod
