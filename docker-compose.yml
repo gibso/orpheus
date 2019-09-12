@@ -24,7 +24,6 @@ services:
       - LANG=C.UTF-8
       - HETS_EXECUTABLE=/opt/Hets/hets
 
-
   specifier:
     build: ./specifier
     networks:
@@ -34,6 +33,7 @@ services:
     environment:
       MAX_FACTS_PER_RELATION: 1
       VALID_FACT_LANGUAGES: 'en,de'
+      CONCEPTNET_HOST: 'api.conceptnet.io'
 
   thesis:
     build: ./thesis

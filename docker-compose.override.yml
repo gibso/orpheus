@@ -12,7 +12,7 @@ services:
   hets-api:
     volumes:
       - ./hets-api:/opt/project
-      - ./data:/data
+      - ./data:/opt/data
     environment:
       FLASK_ENV: development
 
