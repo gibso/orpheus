@@ -19,7 +19,7 @@ For running the application, execute:
 ./orpheus up
 ```
 When running the application the first time, docker will have to pull and build images. This can take some time.
-After that, you can access the application in your browser at `http://localhost`
+After that, you can access the application in your browser at [http://localhost:4200](http://localhost:4200)
 
 ### More Commands
 
